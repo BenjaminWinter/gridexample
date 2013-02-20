@@ -1,11 +1,3 @@
-Ext.require([
-    'Ext.grid.*',
-    'Ext.data.*',
-    'Ext.panel.*',
-    'Ext.layout.container.Border',
-    'Ext.data.reader.Json'
-]);
-
 Ext.onReady(function(){		  
 	Ext.define('mymodel', 
         {
@@ -67,9 +59,7 @@ Ext.onReady(function(){
         height:250,
         split:true,
         region: 'north'
-		//renderTo:'grid-example'
-			})
-                // define a template to use for the detail view
+        })
     var customerTplMarkup = [
         'Customer Name : {customerName}<br/>',
         'Last Name : {contactLastName}<br/>',
@@ -79,6 +69,7 @@ Ext.onReady(function(){
         'city: {city}<br>',
         'Postal Code : {postalCode}<br/>'
     ];
+    
     var customerTpl = Ext.create('Ext.Template', customerTplMarkup);
 
     Ext.create('Ext.Panel', {
@@ -97,8 +88,6 @@ Ext.onReady(function(){
                 html: 'Please select a customer to see additional details.'
         }]
     });
-    
-    // update panel body on selection change
     grid.getSelectionModel().on('selectionchange', function(sm, selectedRecord) {
         if (selectedRecord.length) {
             var detailPanel = Ext.getCmp('detailPanel');
@@ -106,4 +95,4 @@ Ext.onReady(function(){
         }
     });
     store.load();
-		})
+})
