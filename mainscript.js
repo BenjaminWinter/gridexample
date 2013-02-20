@@ -25,40 +25,64 @@ Ext.onReady(function(){
 			url:'json.php', 
 			reader: {
 				type:'json',
-				root:'cds',
+				root:'customers',
 				totalProperty:'total'
 					}
 				}				
 			})
+            
+    var cellEditing = Ext.create('Ext.grid.plugin.CellEditing', {
+        clicksToEdit: 1
+    });
+    
 	var grid = Ext.create('Ext.grid.Panel', {
         store: store,
-		//border:0,
-		//layout:'fit',
 		columns:[{
+            id: 'customerNumber',
+            header:'Customer Number',
             text:'Customer Number',
             flex:1,
             sortable:true,
-            dataIndex:'customerNumber'
+            dataIndex:'customerNumber',
+             editor: {
+                allowBlank: false
+            }
         },{
-            text:'Customer Name',
+            id:'customerName',
+            header:'Customer Name',
             flex:1,
             sortable:true,
-            dataIndex:'customerName'
+            dataIndex:'customerName',
+             editor: {
+                allowBlank: false
+            }
         },{
-            text:'Country',
+            id:'country',
+            header:'Country',
             flex:1,
             sortable:true,
-            dataIndex:'country'
+            dataIndex:'country',
+             editor: {
+                allowBlank: false
+            }
         },{
-            text:'Sales Employee Number',
+            id:'salesRepEmployeeNumber',
+            header:'Sales Employee Number',
             flex:1,
             sortable:true,
-            dataIndex:'salesRepEmployeeNumber'
+            dataIndex:'salesRepEmployeeNumber',
+             editor: {
+                allowBlank: false
+            }
         }],
+        selModel: {
+            selType: 'cellmodel'
+        },
         forceFit:true,
         height:250,
         split:true,
-        region: 'north'
+        region: 'north',
+         plugins: [cellEditing]
         })
     var customerTplMarkup = [
         'Customer Name : {customerName}<br/>',
@@ -88,7 +112,8 @@ Ext.onReady(function(){
                 html: 'Please select a customer to see additional details.'
         }]
     });
-    grid.getSelectionModel().on('selectionchange', function(sm, selectedRecord) {
+    grid.getSelectionModel().on('selectionchange', function(sm, selectedRecord) 
+    {
         if (selectedRecord.length) {
             var detailPanel = Ext.getCmp('detailPanel');
             customerTpl.overwrite(detailPanel.body, selectedRecord[0].data);
