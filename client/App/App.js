@@ -22,7 +22,7 @@ Ext.onReady(function(){
 		model:'mymodel',
 		proxy:{
 			type:'ajax',
-			url:'json.php', 
+			url:'../server/app/data.php', 
 			reader: {
 				type:'json',
 				root:'customers',
@@ -37,40 +37,40 @@ Ext.onReady(function(){
     
 	var grid = Ext.create('Ext.grid.Panel', {
         store: store,
+        region: 'center',
 		columns:[{
             id: 'customerNumber',
             header:'Customer Number',
-            text:'Customer Number',
-            flex:1,
             sortable:true,
             dataIndex:'customerNumber',
+            flex: 1,
              editor: {
                 allowBlank: false
             }
         },{
             id:'customerName',
             header:'Customer Name',
-            flex:1,
             sortable:true,
             dataIndex:'customerName',
+            flex: 1,
              editor: {
                 allowBlank: false
             }
         },{
             id:'country',
             header:'Country',
-            flex:1,
             sortable:true,
             dataIndex:'country',
+            flex: 1,
              editor: {
                 allowBlank: false
             }
         },{
             id:'salesRepEmployeeNumber',
-            header:'Sales Employee Number',
-            flex:1,
+            header:'Sales Reputation Employee Number',
             sortable:true,
             dataIndex:'salesRepEmployeeNumber',
+            flex: 1,
              editor: {
                 allowBlank: false
             }
@@ -78,10 +78,7 @@ Ext.onReady(function(){
         selModel: {
             selType: 'cellmodel'
         },
-        forceFit:true,
-        height:250,
-        split:true,
-        region: 'north',
+        flex: 2,
          plugins: [cellEditing]
         })
     var customerTplMarkup = [
@@ -96,28 +93,36 @@ Ext.onReady(function(){
     
     var customerTpl = Ext.create('Ext.Template', customerTplMarkup);
 
-    Ext.create('Ext.Panel', {
-        renderTo: 'grid-example',
+    var infoPanel = Ext.create('Ext.Panel', {
         frame: true,
         title: 'Customer List',
-        width: 700,
-        height: 400,
-        layout: 'border',
+        region: 'south',
+        flex: 1,
+        layout: 'fit',
         items: [
             grid, {
-                id: 'detailPanel',
+                id: 'infoPanel',
                 region: 'center',
                 bodyPadding: 7,
-                bodyStyle: "background: #ffffff;",
                 html: 'Please select a customer to see additional details.'
         }]
     });
     grid.getSelectionModel().on('selectionchange', function(sm, selectedRecord) 
     {
         if (selectedRecord.length) {
-            var detailPanel = Ext.getCmp('detailPanel');
+            var detailPanel = Ext.getCmp('infoPanel');
             customerTpl.overwrite(detailPanel.body, selectedRecord[0].data);
         }
     });
     store.load();
+    var mainPanel = Ext.create('Ext.Panel', {
+         title:      "Customers",	
+         layout:     'border'
+     });
+    var mainView = Ext.create('Ext.Viewport',{	
+         layout:     'fit',
+     });
+     mainPanel.add(grid);
+     mainPanel.add(infoPanel);	
+     mainView.add(mainPanel);
 })

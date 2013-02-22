@@ -1,8 +1,8 @@
 #################
 ## Eclipse
 #################
-
-extjs/
+Settings.php
+client/Ext/
 *.pydevproject
 .project
 .metadata
