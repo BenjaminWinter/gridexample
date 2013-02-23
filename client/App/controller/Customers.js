@@ -12,6 +12,7 @@ Ext.define('App.controller.Customers', {
         selector: 'panel[id = mainPanel]'
     }],
     init: function() {
+       
     },
     onLaunch: function() {
         var self = this;
@@ -33,5 +34,9 @@ Ext.define('App.controller.Customers', {
                 customerTpl.overwrite(self.getDetailpanel().body, selectedRecord[0].data);
             }
         });
+    
+     this.getMaingrid().on('edit', function(editor, e) {
+    e.record.commit();
+});
     }
 });

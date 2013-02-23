@@ -51,10 +51,9 @@ Ext.define('App.view.Viewport', {
                 allowBlank: false
             }
         }],
-        /*selModel:{
-	    selType: 'cellModel'
+        selModel:{
+	    selType: 'cellmodel'
 	},
-	*/
         flex: 2,
         plugins: [{
             ptype: 'cellediting',
@@ -67,12 +66,11 @@ Ext.define('App.view.Viewport', {
         region: 'south',
         flex: 1,
         layout: 'fit',
-        items: [
-            /*grid, */{
-                id: 'infoPanel',
-                region: 'center',
-                bodyPadding: 7,
-                html: 'Please select a customer to see additional details.'
+        items: [{
+	    id: 'infoPanel',
+	    region: 'center',
+	    bodyPadding: 7,
+	    html: 'Please select a customer to see additional details.'
         }]
     }]
 });
