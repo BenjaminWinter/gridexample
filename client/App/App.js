@@ -6,8 +6,7 @@ Ext.application({
         'App': 'App',
         'Ext': 'Ext/src'
     },
-    requires: [
-    ],
+    requires: [],
     controllers: [
         'Customers'
     ],

@@ -4,8 +4,8 @@ Ext.define('App.view.Viewport', {
         'App.store.Customers',
         'Ext.grid.Panel',
         'Ext.layout.container.Border',
-	'Ext.grid.plugin.CellEditing',
-	'Ext.form.field.Text'
+		'Ext.grid.plugin.CellEditing',
+		'Ext.form.field.Text'
     ],
     title: 'List of Customers',
     layout: 'border',
@@ -13,7 +13,7 @@ Ext.define('App.view.Viewport', {
         xtype: 'grid',
         store: 'Customers',
         region: 'center',
-        id:'maingrid',
+        id: 'maingrid',
 		columns:[{
             id: 'id',
             header:'ID',
@@ -26,7 +26,7 @@ Ext.define('App.view.Viewport', {
             sortable:true,
             dataIndex:'customerName',
             flex: 1,
-             editor: {
+            editor: {
                 allowBlank: false
             }
         },{
@@ -35,7 +35,7 @@ Ext.define('App.view.Viewport', {
             sortable:true,
             dataIndex:'country',
             flex: 1,
-             editor: {
+            editor: {
                 allowBlank: false
             }
         },{
@@ -44,30 +44,30 @@ Ext.define('App.view.Viewport', {
             sortable:true,
             dataIndex:'salesRepEmployeeNumber',
             flex: 1,
-             editor: {
-                allowBlank: false
+            editor: {
+                allowBlank: true
             }
         }],
         selModel:{
 	    selType: 'cellmodel'
-	},
+		},
         flex: 2,
         plugins: [{
             ptype: 'cellediting',
             clicksToEdit: 1
-            }]
+        }]
     }, {
-	id:'mainPanel',
+		id:'mainPanel',
         frame: true,
         title: 'Customer List',
         region: 'south',
         flex: 1,
         layout: 'fit',
         items: [{
-	    id: 'infoPanel',
-	    region: 'center',
-	    bodyPadding: 7,
-	    html: 'Please select a customer to see additional details.'
+			id: 'infoPanel',
+			region: 'center',
+			bodyPadding: 7,
+			html: 'Please select a customer to see additional details.'
         }]
     }]
 });

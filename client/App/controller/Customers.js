@@ -11,9 +11,7 @@ Ext.define('App.controller.Customers', {
         ref:'detailpanel',
         selector: 'panel[id = mainPanel]'
     }],
-    init: function() {
-       
-    },
+    init: function() {},
     onLaunch: function() {
         var self = this;
         var customerTplMarkup = [
@@ -25,9 +23,7 @@ Ext.define('App.controller.Customers', {
             'city: {city}<br>',
             'Postal Code : {postalCode}<br/>'
         ];
-        
         var customerTpl = Ext.create('Ext.Template', customerTplMarkup);
-        
         self.getMaingrid().getSelectionModel().on('selectionchange', function(sm, selectedRecord) 
         {
             if (selectedRecord.length) {
