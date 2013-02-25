@@ -4,8 +4,8 @@ Ext.define('App.view.Viewport', {
         'App.store.Customers',
         'Ext.grid.Panel',
         'Ext.layout.container.Border',
-		'Ext.grid.plugin.CellEditing',
-		'Ext.form.field.Text'
+        'Ext.grid.plugin.CellEditing',
+        'Ext.form.field.Text'
     ],
     title: 'List of Customers',
     layout: 'border',
@@ -14,7 +14,7 @@ Ext.define('App.view.Viewport', {
         store: 'Customers',
         region: 'center',
         id: 'maingrid',
-		columns:[{
+        columns:[{
             id: 'id',
             header:'ID',
             sortable:true,
@@ -49,25 +49,25 @@ Ext.define('App.view.Viewport', {
             }
         }],
         selModel:{
-	    selType: 'cellmodel'
-		},
+        selType: 'cellmodel'
+        },
         flex: 2,
         plugins: [{
             ptype: 'cellediting',
             clicksToEdit: 1
         }]
     }, {
-		id:'mainPanel',
+        id:'mainPanel',
         frame: true,
         title: 'Customer List',
         region: 'south',
         flex: 1,
         layout: 'fit',
         items: [{
-			id: 'infoPanel',
-			region: 'center',
-			bodyPadding: 7,
-			html: 'Please select a customer to see additional details.'
+            id: 'infoPanel',
+            region: 'center',
+            bodyPadding: 7,
+            html: 'Please select a customer to see additional details.'
         }]
     }]
 });
