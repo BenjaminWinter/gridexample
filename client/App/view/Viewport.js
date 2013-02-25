@@ -15,14 +15,11 @@ Ext.define('App.view.Viewport', {
         region: 'center',
         id:'maingrid',
 		columns:[{
-            id: 'customerNumber',
-            header:'Customer Number',
+            id: 'id',
+            header:'ID',
             sortable:true,
-            dataIndex:'customerNumber',
-            flex: 1,
-             editor: {
-                allowBlank: false
-            }
+            dataIndex:'id',
+            flex: 1
         },{
             id:'customerName',
             header:'Customer Name',

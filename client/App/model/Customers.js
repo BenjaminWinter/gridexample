@@ -2,7 +2,7 @@ Ext.define('App.model.Customers', {
     extend: 'Ext.data.Model',               
     fields:
             [
-                {name:'customerNumber'},
+                {name:'id'},
                 {name:'customerName'},
                 {name:'country'},
                 {name:'salesRepEmployeeNumber'},

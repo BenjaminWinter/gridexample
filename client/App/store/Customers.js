@@ -19,7 +19,7 @@ Ext.define('App.store.Customers', {
         writer: {
             type: 'json',
             writeAllFields: false,
-            allowSingle: false,
+            allowSingle: true,
             encode: true,
             root: 'customers'
             }

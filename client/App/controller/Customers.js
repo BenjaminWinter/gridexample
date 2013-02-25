@@ -17,13 +17,13 @@ Ext.define('App.controller.Customers', {
     onLaunch: function() {
         var self = this;
         var customerTplMarkup = [
-        'Customer Name : {customerName}<br/>',
-        'Last Name : {contactLastName}<br/>',
-        'First Name: {contactFirstName}<br/>',
-        'Phone Number: {phone}<br/>',
-        'Address: {addressLine1}<br/>',
-        'city: {city}<br>',
-        'Postal Code : {postalCode}<br/>'
+            'Customer Name : {customerName}<br/>',
+            'Last Name : {contactLastName}<br/>',
+            'First Name: {contactFirstName}<br/>',
+            'Phone Number: {phone}<br/>',
+            'Address: {addressLine1}<br/>',
+            'city: {city}<br>',
+            'Postal Code : {postalCode}<br/>'
         ];
         
         var customerTpl = Ext.create('Ext.Template', customerTplMarkup);
@@ -33,10 +33,6 @@ Ext.define('App.controller.Customers', {
             if (selectedRecord.length) {
                 customerTpl.overwrite(self.getDetailpanel().body, selectedRecord[0].data);
             }
-        });
-    
-     this.getMaingrid().on('edit', function(editor, e) {
-    e.record.commit();
-});
+        });   
     }
 });
