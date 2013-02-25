@@ -6,10 +6,10 @@ Ext.define('App.store.Customers', {
     proxy:{
         type:'ajax',
         api: {
-            create  : '../server/app/create.php',
-            read    : '../server/app/readJSON.php',
-            update  : '../server/app/updateJSON.php',
-            destroy : '../server/app/destroy.php'
+            create  : '../server/app/data.php?action=create',
+            read    : '../server/app/data.php?action=read',
+            update  : '../server/app/data.php?action=update',
+            destroy : '../server/app/data.php?action=destroy'
         }, 
         reader: {
             type:'json',
