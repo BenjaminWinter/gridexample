@@ -1,3 +1,4 @@
+// Usesless command.
 Ext.define('App.controller.Customers', {
     extend: 'Ext.app.Controller',
     requires: [],
