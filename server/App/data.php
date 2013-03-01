@@ -39,6 +39,8 @@ function update(){
     $arr = json_decode($_POST['customers'],true);
     $keys = array_keys($arr);
     $values = array_values($arr);
-    mysql_query("UPDATE classicmodels.customers SET $keys[0] = $values[0] WHERE $keys[1] = $values[1]") or die ("query error");
+    $query = "UPDATE classicmodels.customers SET $keys[0] = '$values[0]' WHERE $keys[1] = '$values[1]'"; 
+    echo json_encode($query);
+    mysql_query($query) or die ("query error");
     mysql_close($conn);
 }
