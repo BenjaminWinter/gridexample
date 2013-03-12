@@ -9,20 +9,9 @@
             'Customerstore'
         ]
     });
-    var grid = view.down("grid[id='maingrid']");
-    
-    grid.store.add(
-        {
-            id: '123',
-            customerName : 'Name1',
-            country: 'Germany',
-            salesRepEmployeeNumber: '1234'
-       },{
-            id: '111',
-            customerName : 'Name2',
-            country: 'England',
-            salesRepEmployeeNumber: '1111'
-        })
+	
+    var grid = view.down("grid[name = 'maingrid']");
+	
     grid.store.load();
     
     t.waitForRowsVisible(grid, function() {

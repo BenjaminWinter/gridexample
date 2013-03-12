@@ -6,7 +6,7 @@ StartTest(function(t) {
                 height : 200,
                 width : 300
             })
-    var grid = form.down("grid[id='maingrid']");
+    var grid = form.down("grid[name = 'maingrid']");
      
      
     t.chain(
