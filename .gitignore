@@ -3,6 +3,7 @@
 #################
 Settings.php
 client/Ext/
+client/siesta/
 *.pydevproject
 .project
 .metadata
