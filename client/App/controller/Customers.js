@@ -6,29 +6,25 @@ Ext.define('App.controller.Customers', {
     ],
     refs: [{
         ref: 'maingrid',
-        selector: 'grid[id = maingrid]' 
+        selector: 'grid[name = maingrid]' 
     },{
-        ref:'detailpanel',
-        selector: 'panel[id = mainPanel]'
+        ref: 'customerlist',
+        selector: 'component[name = customerlist]'
     }],
     init: function() {},
     onLaunch: function() {
-        var self = this;
-        var customerTplMarkup = [
-            'Customer Name : {customerName}<br/>',
-            'Last Name : {contactLastName}<br/>',
-            'First Name: {contactFirstName}<br/>',
-            'Phone Number: {phone}<br/>',
-            'Address: {addressLine1}<br/>',
-            'city: {city}<br>',
-            'Postal Code : {postalCode}<br/>'
-        ];
-        var customerTpl = Ext.create('Ext.Template', customerTplMarkup);
-        self.getMaingrid().getSelectionModel().on('selectionchange', function(sm, selectedRecord) 
-        {
-            if (selectedRecord.length) {
-                customerTpl.overwrite(self.getDetailpanel().body, selectedRecord[0].data);
-            }
+		this.updatepanel();
+        this.getMaingrid().getSelectionModel().on({
+			selectionchange: this.updatepanel,
+			scope: this
         });   
-    }
+    },
+	updatepanel: function() { 
+		var customer = this.getMaingrid().getSelectionModel().selected.first();
+		if (customer) { 
+			this.getCustomerlist().update(customer.getData());
+		} else {
+			this.getCustomerlist().update({});
+		}
+	}
 });

@@ -13,15 +13,13 @@ Ext.define('App.view.Viewport', {
         xtype: 'grid',
         store: 'Customers',
         region: 'center',
-        id: 'maingrid',
+        name: 'maingrid',
         columns:[{
-            id: 'id',
             header:'ID',
             sortable:true,
             dataIndex:'id',
             flex: 1
         },{
-            id:'customerName',
             header:'Customer Name',
             sortable:true,
             dataIndex:'customerName',
@@ -30,7 +28,6 @@ Ext.define('App.view.Viewport', {
                 allowBlank: false
             }
         },{
-            id:'country',
             header:'Country',
             sortable:true,
             dataIndex:'country',
@@ -39,7 +36,6 @@ Ext.define('App.view.Viewport', {
                 allowBlank: false
             }
         },{
-            id:'salesRepEmployeeNumber',
             header:'Sales Reputation Employee Number',
             sortable:true,
             dataIndex:'salesRepEmployeeNumber',
@@ -48,8 +44,9 @@ Ext.define('App.view.Viewport', {
                 allowBlank: true
             }
         }],
-        selModel:{
-        selType: 'cellmodel'
+        selModel: {
+			allowDeselect: true,
+			selType: 'rowmodel'
         },
         flex: 2,
         plugins: [{
@@ -57,17 +54,30 @@ Ext.define('App.view.Viewport', {
             clicksToEdit: 1
         }]
     }, {
-        id:'mainPanel',
         frame: true,
         title: 'Customer List',
         region: 'south',
         flex: 1,
         layout: 'fit',
         items: [{
-            id: 'infoPanel',
+			xtype: 'component',
+            name: 'customerlist',
             region: 'center',
             bodyPadding: 7,
-            html: 'Please select a customer to see additional details.'
+			tpl: [
+				'<tpl if="customerName">',
+				'	Customer Name : {customerName}<br/>',
+				'	Last Name : {contactLastName}<br/>',
+				'	First Name: {contactFirstName}<br/>',
+				'	Phone Number: {phone}<br/>',
+				'	Address: {addressLine1}<br/>',
+				'	city: {city}<br>',
+				'	Postal Code : {postalCode}<br/>',
+				'<tpl else>',
+				'	Please select a customer to see additional details.',
+				'</tpl>'
+			],
+			data: {}
         }]
     }]
 });
