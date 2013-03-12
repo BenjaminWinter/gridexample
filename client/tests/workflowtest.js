@@ -8,15 +8,14 @@ StartTest(function(t) {
             })
     var grid = form.down("grid[name = 'maingrid']");
      
-     
     t.chain(
         { waitFor : 'rowsVisible', args : grid }, 
          
-        { action : 'moveCursorTo', target : 'grid => .x-grid-cell' },
+        { action : 'moveCursorTo', target : 'grid[name = maingrid] => .x-grid-cell:nth-child(2)' },
          
         { waitFor : 1000 },
  
-        { action : 'doubleClick', target : 'grid => .x-grid-cell' },
+        { action : 'doubleClick', target : 'grid[name = maingrid] => .x-grid-cell:nth-child(2)' },
          
         function(next, cell) {
             var prevValue       = grid.store.first().get('customerName');
@@ -36,7 +35,7 @@ StartTest(function(t) {
             next();
         },
          
-        { action : 'doubleClick', target : ' maingrid  => .x-grid-cell:nth-child(4)' },
+        { action : 'doubleClick', target : ' grid[name = maingrid]  => .x-grid-cell:nth-child(4)' },
              
         { waitFor : 'selectorAtCursor', args : 'input' },
  

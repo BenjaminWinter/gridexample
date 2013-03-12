@@ -10,12 +10,12 @@
         ]
     });
 	
-    var grid = view.down("grid[name = 'maingrid']");
+    var grid = view.down("grid[name = 'maingrid']"); 
 	
     grid.store.load();
     
     t.waitForRowsVisible(grid, function() {
         t.is(grid.store.getCount(), grid.getView().getNodes().length, 'Rendered all data in store ok');
-        t.matchGridCellContent(grid, 0, 0, grid.store.first().get(id), 'Found first id in first cell');
+        t.matchGridCellContent(grid, 0, 1, grid.store.first().get('customerName'), 'Found first customerName in first row');
     });
 })
